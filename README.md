@@ -4,4 +4,11 @@ this is a little project to  search cards of the Digimon Card Game 2020 using th
 I will update this project by the time solving bugs and errors and creating new  features.
 
 
+
+
+
 Fell Free to sugest or contribute to the project, any sugestion is welcome.
+you can open a issue or pull request anytime.
+
+
+This project is open source.
