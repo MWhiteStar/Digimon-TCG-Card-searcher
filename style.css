@@ -1,0 +1,118 @@
+h1{
+text-align: center;
+display: flex;
+justify-content: center;
+background-color: cornflowerblue;
+font-size: larger;
+height: 30px;
+box-shadow: 0 0 20px;
+border: 2px;
+border-color: black;
+}
+
+body{
+    background-color: gray;
+}
+
+.imagem{
+margin-top: 10px;
+display: flex;
+text-align: center;
+font-size: larger;
+box-sizing: border-box;
+border: 50px;
+border: 30px;
+border-color: black;
+border: 5px solid black;
+box-shadow: 0 10px 10px;
+background-color: blueviolet;
+width: 1700px;
+position: relative;
+}
+
+.imagemDigi{
+    min-height: 500px;
+    min-width: 400px;
+    max-width: 400px;
+    max-height: 500px;
+}
+
+.titulo{
+    text-align: center;
+    font-size: 32px;
+    float: inline-start;
+}
+
+.cartaInfos{
+    font-size: 25px;
+}
+
+.infoTitle{
+    display: flex;
+    flex-direction: column;
+}
+
+.input{
+    margin-top: 10px;
+    justify-self: center;
+    display: flex;
+    height: 30px;
+    width: 500px;
+    margin: auto;
+}
+
+.buton{
+display: flex;
+margin: auto;
+height: 30px;
+width: 200px;
+border-color: black;
+
+}
+
+.info{
+    display: none;
+    margin-top: 20px;
+    float: left;
+    border: 30px;
+    border-color: black;
+    border: 1px solid black;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 50%;
+    box-shadow: 0 10px 10px;
+    flex-direction: column;
+    text-align: center;
+}
+
+.parametros{
+    justify-content: center;
+    size: 20px;
+    border-radius: 20px;
+}
+.siteLado{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 150px;
+    position: relative;
+    min-height: 100%;
+    font-size: 20px;
+    background-color: red;
+    font-family: 'Courier New', Courier, monospace ;
+    border-color: black;
+    border: 10px;
+}
+
+.mexidao{
+    display: flex;
+    flex-direction: row;
+}
+
+.cardColor{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 10px;
+}

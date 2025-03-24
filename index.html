@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    
+
+ <title> Digimon Search</title>   
+ <h1>Digimon Card Search</h1> 
+</head>
+
+<body>
+    <input type="text" id="cardNameInput" class="input" placeholder="Digite o nome do Digimon" onfocus="limpaText()">
+    <section class="parametros" id="parametros">
+
+    </section>
+    <div class="cardColor">
+    <select id="cardColor" class="cardColors" placeholder="cor"><option selected disabled>cor</option></select>
+    <select id="level" class="cardLevels" placeholder="level"><option selected disabled>level</option></select>
+</div>
+</section>
+    <button class="buton" onclick="searchCard()">Pesquisar</button>
+    <div class="mexidao">
+   <aside id="paginaLado" class="siteLado">
+<p>Cartas</p>
+<p>Decks</p>
+<p>Torneio</p>
+   </aside>     
+<div class="container" id="digimonCardInfo"> 
+    </div>
+</div>
+
+<section class="info">
+    <h2 id="tituloCarta"></h2>
+    <p id="infoCarta"></p>
+    <section id="fundoCor"></section>
+    <p></p>
+</section>
+</div>
+<script src="index.js"></script>    
+</body>
+
+</html>
