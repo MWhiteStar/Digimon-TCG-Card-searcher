@@ -1,4 +1,4 @@
-const apiUrl =`https://digimoncard.io/api-public/search.php?n=`;
+
 
 
 async function searchCard(){
@@ -14,18 +14,23 @@ async function searchCard(){
     return;
    }
 
- const digiList = document.getElementById('digimonCardInfo');
+   const apiUrl =`https://digimoncard.io/api-public/search.php?n=${encodeURIComponent(cardName)}&desc=include`; //
+
+    const digiList = document.getElementById('digimonCardInfo');
+    digiList.innerHTML = ""; //para limpar resultados anteriores.
 
  try
 {
     //define a variavel resposta que é igual a esperar a busca de informações do nome do card na api
-    const response = await fetch(apiUrl + cardName);
+    const response = await fetch(apiUrl);
+    
    
             if (!response.ok) {
                 throw new Error(`Erro na solicitação da API. Status: ${response.status}`);
             }
             //data apenas transforma a resposta em um arquivo json.
             const data = await response.json();
+            console.log("Dados retornados pela API:", data);
 
             if(data.length === 0){
                 digiList.innerHTML = "<p>Nenhuma carta encontrada.</p>";
@@ -37,7 +42,7 @@ async function searchCard(){
                 cardDiv.classList.add("imagem");
 
                 const img = document.createElement("img");
-                img.src = digimon.image_url || "fallback-image.jpg"
+                img.src = `https://images.digimoncard.io/images/cards/${digimon.id}.jpg` || "fallback-image.jpg";
                 img.classList.add("imagemDigi");
                 img.alt = digimon.name || "Digimon Card";
 
@@ -50,7 +55,9 @@ async function searchCard(){
 
                 const infoText = document.createElement("p");
                 infoText.classList.add("cartasInfo");
-                infoText.innerHTML = (digimon.maineffect || "Sem efeito") +  "<br>" + (digimon.soureeffect || "sem efeito de herança");
+                infoText.innerHTML = (digimon.main_effect ? `<b>Efeito principal </b>${digimon.main_effect}` : "Sem efeito") + 
+                 "<br>" + 
+                 (digimon.source_effect ? `<b>Efeito de Herança: </b>${digimon.source_effect}` : "sem efeito de herança");
 
                 infoDiv.appendChild(title);
                 infoDiv.appendChild(infoText);
@@ -99,3 +106,6 @@ function limpaText(){
   document.getElementById('cardNameInput').value = "";
 };
 
+fetch("https://digimoncard.io/api-public/search.php?n=Agumon")
+    .then(response => response.json())
+    .then(data => console.log("Data 2 retornada", data));
