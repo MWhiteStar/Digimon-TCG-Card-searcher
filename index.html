@@ -9,19 +9,63 @@
     
 
  <title> Digimon Search</title>   
- <h1>Digimon Card Search</h1> 
+ 
 </head>
 
 <body>
+    <h1>Digimon Card Search</h1> 
     <input type="text" id="cardNameInput" class="input" placeholder="Digite o nome do Digimon" onfocus="limpaText()">
     <section class="parametros" id="parametros">
 
+    <div class="cardColor"></div>
+    <select id="cardColor" class="cardColors">
+        <option value="">cor</option>
+        <option value="Red">Red</option>
+        <option value="Blue">Blue</option>
+        <option value="Yellow">Yellow</option>
+        <option value="Green">Green</option>
+        <option value="Black">Black</option>
+        <option value="Purple">Purple</option>
+        <option value="White">White</option>
+        </select>
+
+    <select id="level" class="cardLevels">
+        <option value="">level</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+    </select>
+
+    <select id="rarity" class="cardRarity">
+        <option value="">Rarity</option>
+        <option value="Common">Common</option>
+        <option value="Uncommon">Uncommon</option>
+        <option value="Rare">Rare</option>
+        <option value="Super Rare">Super Rare</option>
+        <option value="Secret Rare">Secret Rare</option>
+    </select>
+
+    <select id="tipoDeCarta">
+        <option value="">Tipo de Carta</option>
+        <option value="Digimon">Digimon</option>
+        <option value="Tamer">Tamer</option>
+        <option value="Option">Option</option>
+        <option value="Digi-Egg">Digi-Egg</option>
+    </select>
+    <label for="limiteDeCartas">Cartas por pagina:</label>
+    <select id="limiteCartas" onchange="alterarLimite(this.value)">
+        <option value="30">30</option>
+        <option value="60">60</option>
+        <option value="90">90</option>
+        <option value="120">120</option>
+    </select>
+    <div id="pagina"></div>
     </section>
-    <div class="cardColor">
-    <select id="cardColor" class="cardColors" placeholder="cor"><option selected disabled>cor</option></select>
-    <select id="level" class="cardLevels" placeholder="level"><option selected disabled>level</option></select>
-</div>
-</section>
+
+<section>
     <button class="buton" onclick="searchCard()">Pesquisar</button>
     <div class="mexidao">
    <aside id="paginaLado" class="siteLado">
@@ -32,6 +76,7 @@
 <div class="container" id="digimonCardInfo"> 
     </div>
 </div>
+</section>
 
 <section class="info">
     <h2 id="tituloCarta"></h2>
