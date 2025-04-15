@@ -1,0 +1,15 @@
+{
+  "name": "digimon-tcg-card-searcher",
+  "version": "1.0.0",
+  "description": "this is a little project to  search cards of the Digimon Card Game 2020 using the digimon.io API, it permit us to search cards by it´s name and return all informations about the cards with that name.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
