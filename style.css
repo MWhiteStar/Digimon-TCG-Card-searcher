@@ -1,118 +1,287 @@
-h1{
-text-align: center;
-display: flex;
-justify-content: center;
-background-color: cornflowerblue;
-font-size: larger;
-height: 30px;
-box-shadow: 0 0 20px;
-border: 2px;
-border-color: black;
-}
+  h1{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  background-color: cornflowerblue;
+  font-size: larger;
+  height: 30px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border: 2px;
+  }
 
-body{
-    background-color: gray;
-}
+  body{
+      background-color: gray;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #c8d2ec, #7f7588);
+      margin: 0;
+      padding: 20px;
+      color: #333;
+  }
 
-.imagem{
-margin-top: 10px;
-display: flex;
-text-align: center;
-font-size: larger;
-box-sizing: border-box;
-border: 50px;
-border: 30px;
-border-color: black;
-border: 5px solid black;
-box-shadow: 0 10px 10px;
-background-color: blueviolet;
-width: 1700px;
-position: relative;
-}
+  body.modo-escuro {
+    background-color: #1e1e1e;
+    background: linear-gradient(to bottom, #424449, #7f7588);
+    color: #181818;
+  }
 
-.imagemDigi{
-    min-height: 500px;
-    min-width: 400px;
-    max-width: 400px;
-    max-height: 500px;
-}
-
-.titulo{
-    text-align: center;
-    font-size: 32px;
-    float: inline-start;
-}
-
-.cartaInfos{
-    font-size: 25px;
-}
-
-.infoTitle{
+  #digimonCardInfo {
     display: flex;
-    flex-direction: column;
-}
+    flex: 1;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
 
-.input{
-    margin-top: 10px;
-    justify-self: center;
-    display: flex;
-    height: 30px;
-    width: 500px;
-    margin: auto;
-}
+  #digimonCardInfo.grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      
+    }
 
-.buton{
-display: flex;
-margin: auto;
-height: 30px;
-width: 200px;
-border-color: black;
+  #digimonCardInfo.list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 10px;
+    }
 
-}
+  .imagem{
+  margin-top: 10px;
+  display: flex;
+  text-align: center;
+  font-size: larger;
+  box-sizing: border-box;
+  border-radius: 12px;
+  border-color: black;
+  border: 5px solid black;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #d3bce3;
+  position: relative;
+  padding: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  }
 
-.info{
-    display: none;
-    margin-top: 20px;
-    float: left;
-    border: 30px;
-    border-color: black;
-    border: 1px solid black;
-    padding: 10px;
-    box-sizing: border-box;
-    width: 50%;
-    box-shadow: 0 10px 10px;
-    flex-direction: column;
-    text-align: center;
-}
+  .imagem:hover {
+      transform: scale(1.05);
+    }
+    
 
-.parametros{
-    justify-content: center;
-    size: 20px;
-    border-radius: 20px;
-}
-.siteLado{
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 150px;
-    position: relative;
-    min-height: 100%;
-    font-size: 20px;
-    background-color: red;
-    font-family: 'Courier New', Courier, monospace ;
-    border-color: black;
-    border: 10px;
-}
+  select {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
 
-.mexidao{
-    display: flex;
-    flex-direction: row;
-}
+  .imagemDigi{
+    width: 300px;
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+  }
 
-.cardColor{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin: 10px;
-}
+  @keyframes pulseCard {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.08);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    
+    .imagemDigi:hover {
+      animation: pulseCard 0.4s ease;
+    }
+
+  .titulo{
+      text-align: center;
+      font-size: 32px;
+      float: inline-start;
+  }
+
+  .cartaInfos{
+      font-size: 30px;
+      color: #333;
+  }
+
+  .infoTitle{
+      display: flex;
+      flex-direction: column;
+  }
+
+  .input{
+      margin-top: 10px;
+      justify-self: center;
+      display: flex;
+      height: 30px;
+      width: 500px;
+      margin: auto;
+  }
+
+  .buton{
+  display: flex;
+  margin: 10px auto;
+  height: 30px;
+  width: 200px;
+  border-color: black;
+  border-radius: 8px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  }
+
+  #pagina button{
+      margin: 10px;
+      padding: 8px 16px;
+      background-color: #3366cc;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s;
+  }
+
+  #pagina button:hover {
+      background-color: #254c99;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      position: relative;
+      animation: aparecer 0.5s ease;
+    }
+      
+
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      color: #888;
+      cursor: pointer;
+    }
+    
+    .close-button:hover {
+      color: #333;
+    }
+
+    
+  .info{
+      display: none;
+      margin-top: 20px;
+      float: left;
+      border: 30px;
+      border-color: black;
+      border: 1px solid black;
+      padding: 10px;
+      box-sizing: border-box;
+      width: 50%;
+      box-shadow: 0 10px 10px;
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .parametros{
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 20px;
+      gap: 10px;
+
+  }
+  .siteLado {
+      flex: 0 0 150px;
+      margin-top: 20px;
+      background-color: #ff6b6b;
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      font-size: 18px;
+      min-width: 150px;
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+  .barraLateral{
+      display: flex;
+      flex-direction: row;
+      padding: 10px;
+      gap: 10px;
+  }
+
+  .cardColor{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin: 10px;
+  }
+
+  .grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 10px;
+  }
+
+  .list{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+  }
+
+  .modo-exibicao button {
+      margin: 0 8px;
+      padding: 8px 16px;
+      font-size: 16px;
+      font-weight: bold;
+      background-color: #6ca0dc;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .modo-exibicao button:hover {
+      background-color: #5b8ac4;
+    }
+
+   
+    

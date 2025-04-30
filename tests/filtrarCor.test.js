@@ -1,4 +1,4 @@
-const filtrarCor = require('../utilit/filtrarCor');
+const filtrarCor = require('../functions/filtrarCor');
 
 describe('filtrarCor', () => {
     const mockCards = [

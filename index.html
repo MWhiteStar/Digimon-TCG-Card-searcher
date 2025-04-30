@@ -12,11 +12,18 @@
  
 </head>
 
-<body>
+<body class="light">
     <h1>Digimon Card Search</h1> 
     <input type="text" id="cardNameInput" class="input" placeholder="Digite o nome do Digimon" onfocus="limpaText()">
     <section class="parametros" id="parametros">
 
+        <div class="buttons-container">
+            <button onclick="setDisplayMode('grid')">Modo Grid</button>
+            <button onclick="setDisplayMode('list')">Modo Lista</button>
+            <button id="mudar-tema">🌙 Mudar Tema</button>
+        </div>
+
+        
     <div class="cardColor"></div>
     <select id="cardColor" class="cardColors">
         <option value="">cor</option>
@@ -67,11 +74,11 @@
 
 <section>
     <button class="buton" onclick="searchCard()">Pesquisar</button>
-    <div class="mexidao">
+    <div class="barraLateral">
    <aside id="paginaLado" class="siteLado">
 <p>Cartas</p>
 <p>Decks</p>
-<p>Torneio</p>
+<p>Cards Favoritos.</p>
    </aside>     
 <div class="container" id="digimonCardInfo"> 
     </div>

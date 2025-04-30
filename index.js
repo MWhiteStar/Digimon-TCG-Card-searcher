@@ -1,15 +1,20 @@
 let allCards = [];
 let currentPage = 1;
 let cardsPerPage = 30;
+let displayMode = 'grid';
+const toggle = document.getElementById('mudar-tema');
+const body = document.body;
 
 
 async function searchCard(page = 1) {
   currentPage = page;
-  mostrarPaginaAtual();
+  
 
 
   const cardNameInput = document.getElementById("cardNameInput");
   const cardName = cardNameInput.value.trim();
+
+  
   
   const series = "Digimon Card Game";
   const rarity = document.getElementById("rarity").value; 
@@ -50,7 +55,6 @@ async function searchCard(page = 1) {
     }
 
     allCards = data;
-
     if(rarity){
         allCards = allCards.filter(card => card.rarity?.toLowerCase() === rarity.toLowerCase()
     );
@@ -68,6 +72,7 @@ function mostrarPaginaAtual() {
 
   const digiList = document.getElementById("digimonCardInfo");
   digiList.innerHTML = "";
+  digiList.className = displayMode;
 
   const start = (currentPage - 1) * cardsPerPage;
   const end = start + cardsPerPage;
@@ -85,31 +90,39 @@ function mostrarPaginaAtual() {
     img.classList.add("imagemDigi");
     img.alt = digimon.name || "Digimon Card";
 
-    const infoDiv = document.createElement("div");
-    infoDiv.classList.add("infoTitle");
-
-    const title = document.createElement("h2");
-    title.classList.add("titulo");
-    title.textContent = digimon.name || "Nome desconhecido";
-
-    const infoText = document.createElement("p");
-    infoText.classList.add("cartasInfo");
-    infoText.innerHTML =
-      (digimon.main_effect
-        ? `<b>Efeito principal </b>${digimon.main_effect}`
-        : "<b>Sem efeito</b>") +
-      "<br>" +
-      "<br>" +
-      (digimon.source_effect
-        ? `<b>Efeito de Herança: </b>${digimon.source_effect}`
-        : "<b>sem efeito de herança</b>");
-
-    infoDiv.appendChild(title);
-    infoDiv.appendChild(infoText);
     cardDiv.appendChild(img);
-    cardDiv.appendChild(infoDiv);
+
+    if(displayMode === 'list'){
+      const infoDiv = document.createElement("div");
+      infoDiv.classList.add("infoTitle");
+  
+      const title = document.createElement("h2");
+      title.classList.add("titulo");
+      title.textContent = digimon.name || "Nome desconhecido";
+  
+      const infoText = document.createElement("p");
+      infoText.classList.add("cartasInfo");
+      infoText.innerHTML =
+        (digimon.main_effect
+          ? `<b>Efeito principal </b>${digimon.main_effect}`
+          : "<b>Sem efeito</b>") +
+        "<br>" +
+        "<br>" +
+        (digimon.source_effect
+          ? `<b>Efeito de Herança: </b>${digimon.source_effect}`
+          : "<b>sem efeito de herança</b>");
+
+          infoDiv.appendChild(title);
+          infoDiv.appendChild(infoText);
+          cardDiv.appendChild(infoDiv);
+    } else {
+      cardDiv.addEventListener('click', () => mostrarModal(digimon));
+    }
+
     digiList.appendChild(cardDiv);
   });
+
+
 }
 
 function atualizarPagina(resultadoTotal) {
@@ -130,7 +143,7 @@ function atualizarPagina(resultadoTotal) {
     paginaDiv.appendChild(nextButton);
   }
 }
-
+searchCard(currentPage);
 function alterarLimite(novoLimite) {
   cardsPerPage = parseInt(novoLimite);
   searchCard(1);
@@ -144,3 +157,48 @@ function limpaText() {
   document.getElementById("level").value = "";
   document.getElementById("tipoDeCarta").value = "";
 }
+
+
+function setDisplayMode(mode) {
+  displayMode = mode;
+
+  const container = document.getElementById('digimonCardInfo');
+  container.className = displayMode;
+  mostrarPaginaAtual()
+}
+
+function mostrarModal(digimon){
+const modal = document.createElement('div');
+
+const existingModal = document.querySelector('.modal');
+if(existingModal) existingModal.remove();
+
+modal.className = 'modal';
+
+modal.innerHTML= `<div class='modal-content'>
+<span class='close-button'>&times;</span>
+<h2>${digimon.name || "Nome Desconhecido"}</h2>
+<img src="${digimon.img_url || `https://images.digimoncard.io/images/cards/${digimon.id}.jpg`}" alt="${digimon.name}" class="imagemDigi">
+<p><b>Efeito Principal:</b> ${digimon.main_effect || "Sem Efeito"}</p>
+<p><b>Efeito de Herança:</b> ${digimon.source_effect || "Sem efeito de herança"}</p>
+</div>`;
+
+document.body.appendChild(modal);
+
+const closeButton = modal.querySelector('.close-button');
+closeButton.onclick = () => modal.remove();
+};
+
+
+toggle.addEventListener('click', () => {
+  body.classList.toggle('modo-escuro');
+  const temaAtual = body.classList.contains('modo-escuro') ? 'escuro' : 'claro';
+  localStorage.setItem('tema', temaAtual);
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+  const temaSalvo = localStorage.getItem('tema');
+  if (temaSalvo === 'escuro') {
+    body.classList.add('modo-escuro');
+  };
+});
